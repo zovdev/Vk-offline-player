@@ -1,6 +1,6 @@
 # VK Offline Player
 
-A modern, offline-capable music player for VK (VKontakte) built with Python and PySide6.
+A modern, offline-capable music player for VK (VKontakte) built with Python and PySide6. | Тест возможностей Antigravity, весь код сгенерирован с помощью AI
 
 ## Features
 
@@ -66,3 +66,4 @@ A modern, offline-capable music player for VK (VKontakte) built with Python and 
 ## License
 
 MIT License
+
