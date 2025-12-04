@@ -18,7 +18,7 @@ A modern, offline-capable music player for VK (VKontakte) built with Python and 
 
 1.  Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/vk-offline-player.git
+    git clone https://github.com/zovdev/vk-offline-player.git
     cd vk-offline-player
     ```
 
@@ -66,4 +66,5 @@ A modern, offline-capable music player for VK (VKontakte) built with Python and 
 ## License
 
 MIT License
+
 
