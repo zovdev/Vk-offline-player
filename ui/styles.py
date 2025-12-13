@@ -8,7 +8,7 @@ QWidget {
     background-color: #1e1e1e;
     color: #ffffff;
     font-family: 'Segoe UI', sans-serif;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 QListWidget {
@@ -18,7 +18,7 @@ QListWidget {
 }
 
 QListWidget::item {
-    padding: 10px;
+    padding: 3px 5px;
     border-bottom: 1px solid #333;
 }
 
@@ -35,7 +35,7 @@ QPushButton {
     background-color: #007acc;
     color: white;
     border: none;
-    padding: 8px 16px;
+    padding: 4px 10px;
     border-radius: 4px;
 }
 
@@ -49,43 +49,43 @@ QPushButton:pressed {
 
 QSlider::groove:horizontal {
     border: 1px solid #333;
-    height: 6px;
+    height: 4px;
     background: #333;
     margin: 2px 0;
-    border-radius: 3px;
+    border-radius: 2px;
 }
 
 QSlider::handle:horizontal {
     background: #007acc;
     border: 1px solid #007acc;
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     margin: -5px 0;
-    border-radius: 7px;
+    border-radius: 6px;
 }
 
 QSlider::groove:vertical {
     border: 1px solid #333;
-    width: 6px;
+    width: 4px;
     background: #333;
     margin: 0 2px;
-    border-radius: 3px;
+    border-radius: 2px;
 }
 
 QSlider::handle:vertical {
     background: #007acc;
     border: 1px solid #007acc;
-    height: 14px;
-    width: 14px;
+    height: 12px;
+    width: 12px;
     margin: 0 -5px;
-    border-radius: 7px;
+    border-radius: 6px;
 }
 
 QLineEdit {
     background-color: #3c3c3c;
     border: 1px solid #3c3c3c;
     color: #cccccc;
-    padding: 5px;
+    padding: 3px;
     border-radius: 2px;
 }
 
@@ -100,8 +100,8 @@ QLabel {
 QGroupBox {
     border: 1px solid #333;
     border-radius: 5px;
-    margin-top: 10px;
-    padding-top: 10px;
+    margin-top: 8px;
+    padding-top: 8px;
 }
 
 QGroupBox::title {

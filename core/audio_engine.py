@@ -13,6 +13,7 @@ class AudioEngine:
         self.samplerate = 44100
         self.position = 0.0
         self.playing = False
+        self.finished = False
         self.volume = 1.0
         
         self.eq = Equalizer()
@@ -76,6 +77,8 @@ class AudioEngine:
             self.stream.stop()
             self.stream.close()
             self.stream = None
+        # Memory optimization: clear large data array
+        self.data = None
 
     def seek(self, position_seconds):
         if self.data is not None:
@@ -104,6 +107,7 @@ class AudioEngine:
         if indices[0] > max_idx:
             outdata.fill(0)
             self.playing = False
+            self.finished = True
             return
             
         valid_mask = indices <= max_idx
@@ -128,6 +132,7 @@ class AudioEngine:
         if out_len < frames:
             outdata[out_len:] = 0
             self.playing = False
+            self.finished = True
             
         self.position += frames * self.speed
         
