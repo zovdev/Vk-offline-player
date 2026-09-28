@@ -1,70 +1,75 @@
-# VK Offline Player
+# 🎧 VKPlayer
 
-A modern, offline-capable music player for VK (VKontakte) built with Python and PySide6. | Тест возможностей Antigravity, весь код сгенерирован с помощью AI
+![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)
+![GUI](https://img.shields.io/badge/GUI-PySide6%20(Qt6)-41CD52?logo=qt&logoColor=white)
+![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-0078D4?logo=windows&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-3DA639)
 
-## Features
+Компактный плеер музыки **ВКонтакте** для компьютера: тёмный интерфейс без рамки окна, 10-полосный эквалайзер, прослушанные треки остаются доступны офлайн. Без VPN и сторонних сервисов — плеер общается с VK API напрямую.
 
-*   **Offline Playback**: Downloads tracks and stores them locally in a SQLite database.
-*   **High-Quality Audio**: Supports MP3 and M3U8 stream conversion.
-*   **Album Art**: Fetches and displays high-resolution album art.
-*   **Audio Effects**:
-    *   10-Band Equalizer
-    *   Speed Control (0.0x - 3.0x) with pitch correction
-    *   Multi-band Limiter/Compressor for consistent volume
-*   **Export**: Export processed tracks (with EQ and speed effects applied) to MP3.
-*   **Modern UI**: Dark theme with a responsive and clean interface.
+<!-- Скриншот: положите файл docs/screenshot.png и раскомментируйте строку ниже
+![Скриншот VKPlayer](docs/screenshot.png)
+-->
 
-## Installation
+---
 
-1.  Clone the repository:
-    ```bash
-    git clone https://github.com/zovdev/vk-offline-player.git
-    cd vk-offline-player
-    ```
+## ✨ Возможности
 
-2.  Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
+- 🎵 **Моя музыка** — список треков с обложками, поиск, перемешивание, автоматический переход к следующему треку.
+- 🔐 **Вход по токену** — единственный способ входа. Вставляете токен в поле — плеер сам его распознаёт.
+- 🎚️ **10-полосный эквалайзер**.
+- 🔊 **Компрессор звука** — сглаживает слишком громкие пики, чтобы звук не искажался на высокой громкости.
+- ⏩ **Скорость воспроизведения** — от 0 до 3x.
+- 🗄️ **Офлайн-кэш** — прослушанные треки сохраняются на диск и играют без интернета.
+- 💾 **Экспорт треков** в MP3 одним кликом.
+- ⌨️ **Медиа-клавиши** — play/pause/next с клавиатуры или наушников, плюс системная плашка с названием трека и обложкой. **Работает только на Windows.**
 
-    *Note: You will need `ffmpeg` installed and added to your system PATH for M3U8 stream support.*
+## 🚀 Быстрый старт
 
-## Usage
+```bash
+git clone https://github.com/zovdev/VKPlayer.git
+cd VKPlayer
+pip install -r requirements.txt
+python main_gui.py
+```
 
-1.  Run the application:
-    ```bash
-    python main.py
-    ```
+> **Важно:** плеер тестировался только на **Windows 10/11**. На Linux всё собрано из кроссплатформенных библиотек, так что запускаться должно, но это не проверялось.
 
-2.  **Authentication**:
-    *   Enter your VK Access Token in the input field.
-    *   Click "Load Tracks".
+## 🔐 Вход
 
-3.  **Playback**:
-    *   Double-click a track to play.
-    *   Use the controls at the bottom to pause, seek, and adjust volume.
+Единственный способ входа — **токен VK API**.
 
-4.  **Effects**:
-    *   Adjust the 10-band equalizer to customize the sound.
-    *   Use the speed slider to change playback speed without altering pitch.
+При первом запуске вставьте в поле входа сам токен или ссылку, в которой он есть (плеер сам вытащит токен из ссылки). Токен сохранится в локальной базе, при следующих запусках вход не потребуется.
 
-5.  **Export**:
-    *   Select a track.
-    *   Click "Export Processed Track" to save a version with your current effects applied.
+## 🗂️ Структура проекта
 
-## Requirements
+```
+VKPlayer/
+├── main_gui.py                    # интерфейс
+└── core/
+    ├── vk_client.py               # VK API: вход по токену, получение аудио
+    ├── database.py                # локальная база (SQLite)
+    ├── effects.py                 # эквалайзер и компрессор
+    ├── web_audio_compressor.py    # компрессор
+    └── media_keys.py              # медиа-клавиши (только Windows)
+```
 
-*   Python 3.8+
-*   PySide6
-*   sounddevice
-*   soundfile
-*   numpy
-*   requests
-*   pedalboard
-*   pydub
+## 💾 Где хранятся данные
 
-## License
+Всё в одном файле `player_data.db` (SQLite) рядом с плеером:
 
-MIT License
+- **settings** — токен;
+- **tracks** — библиотека: треки и обложки;
+- **ui_state** — громкость, эквалайзер и прочие настройки.
 
+## ⚠️ Примечания
 
+- Токен хранится в `player_data.db` в открытом виде — **не передавайте этот файл третьим лицам**.
+- VK может изменить доступ к аудио через API в любой момент.
+- Проект предназначен для прослушивания **своей** музыки ВКонтакте.
+
+## 📄 Лицензия
+
+Проект распространяется по лицензии [MIT](LICENSE).
+
+Автор: [zovdev](https://github.com/zovdev)

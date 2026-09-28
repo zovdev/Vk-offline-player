@@ -1,0 +1,6 @@
+PySide6>=6.6
+httpx[http2]>=0.27
+numpy>=1.26
+scipy>=1.11
+sounddevice>=0.4.6
+soundfile>=0.12
